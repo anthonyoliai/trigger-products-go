@@ -1,6 +1,6 @@
 module github.com/anthonyoliai/trigger-products-go
 
-go 1.23.1
+go 1.23.0
 
 require (
 	gorm.io/driver/mysql v1.5.7

@@ -34,7 +34,7 @@ func main() {
 		panic(err)
 	}
 
-	phone, err = db.Product("Galaxy S20")
+	phone, err = db.Product(phone.Name)
 	if err != nil {
 		panic(err)
 	}
@@ -45,7 +45,7 @@ func main() {
 		panic(err)
 	}
 
-	phone, err = db.Product("Galaxy S20")
+	phone, err = db.Product(phone.Name)
 	if err != nil {
 		panic(err)
 	}
