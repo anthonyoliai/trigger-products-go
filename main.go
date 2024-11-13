@@ -22,15 +22,15 @@ func main() {
 	laptop := storage.Product{Name: "Macbook Air M1 2019", Country: "Germany", Price: 2000.0, ReleaseDate: releaseDate}
 	tablet := storage.Product{Name: "iPad 2019", Country: "Spain", Price: 500.0, ReleaseDate: releaseDate}
 
-	if err := db.CreateProduct(phone); err != nil {
+	if err := db.SaveProduct(phone); err != nil {
 		panic(err)
 	}
 
-	if err := db.CreateProduct(laptop); err != nil {
+	if err := db.SaveProduct(laptop); err != nil {
 		panic(err)
 	}
 
-	if err := db.CreateProduct(tablet); err != nil {
+	if err := db.SaveProduct(tablet); err != nil {
 		panic(err)
 	}
 
@@ -41,7 +41,7 @@ func main() {
 	fmt.Printf("The fetched product has the following information: %+v\n", phone)
 
 	phone.Price = 500.0
-	if err := db.CreateProduct(phone); err != nil {
+	if err := db.SaveProduct(phone); err != nil {
 		panic(err)
 	}
 

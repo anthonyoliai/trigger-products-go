@@ -28,7 +28,7 @@ func (db *storage) CreateTriggers() error {
 	return db.beforeProductUpdateTrigger()
 }
 
-func (db *storage) CreateProduct(product Product) error {
+func (db *storage) SaveProduct(product Product) error {
 	return db.Save(&product).Error
 }
 
