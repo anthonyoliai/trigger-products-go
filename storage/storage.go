@@ -28,15 +28,8 @@ func (db *storage) CreateTriggers() error {
 	return db.beforeProductUpdateTrigger()
 }
 
-func (db *storage) CreateProducts(products ...Product) error {
-	return db.Create(&products).Error
-}
-
-func (db *storage) UpdateProduct(product Product) error {
-	if _, err := db.Product(product.Name); err != nil {
-		return err
-	}
-	return db.Where("name = ?", product.Name).Updates(product).Error
+func (db *storage) CreateProduct(product Product) error {
+	return db.Save(&product).Error
 }
 
 func (db *storage) Product(name string) (Product, error) {

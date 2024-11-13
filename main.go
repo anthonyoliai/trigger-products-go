@@ -22,25 +22,33 @@ func main() {
 	laptop := storage.Product{Name: "Macbook Air M1 2019", Country: "Germany", Price: 2000.0, ReleaseDate: releaseDate}
 	tablet := storage.Product{Name: "iPad 2019", Country: "Spain", Price: 500.0, ReleaseDate: releaseDate}
 
-	if err := db.CreateProducts(phone, laptop, tablet); err != nil {
+	if err := db.CreateProduct(phone); err != nil {
 		panic(err)
 	}
 
-	fetchedPhone, err := db.Product("Galaxy S20")
+	if err := db.CreateProduct(laptop); err != nil {
+		panic(err)
+	}
+
+	if err := db.CreateProduct(tablet); err != nil {
+		panic(err)
+	}
+
+	phone, err = db.Product("Galaxy S20")
 	if err != nil {
 		panic(err)
 	}
-	fmt.Printf("The fetched product has the following information: %+v\n", fetchedPhone)
+	fmt.Printf("The fetched product has the following information: %+v\n", phone)
 
-	phone.Price *= 0.5
-	if err := db.UpdateProduct(phone); err != nil {
+	phone.Price = 500.0
+	if err := db.CreateProduct(phone); err != nil {
 		panic(err)
 	}
 
-	fetchedPhone, err = db.Product("Galaxy S20")
+	phone, err = db.Product("Galaxy S20")
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Printf("The fetched product's new information after applying the discount : %+v\n", fetchedPhone)
+	fmt.Printf("The fetched product's updated information after applying the discount : %+v\n", phone)
 }
